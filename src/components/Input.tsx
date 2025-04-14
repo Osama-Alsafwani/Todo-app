@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import check from "../images/icon-check.svg";
 
 interface Props {
