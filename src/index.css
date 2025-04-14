@@ -1,0 +1,133 @@
+@import "tailwindcss";
+/* @import "tailwindcss/preflight"; */
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url(./fonts/JosefinSans-VariableFont_wght.ttf) format('truetype');
+}
+
+@theme {
+    --very-light-gray-lt: hsl(0, 0%, 98%);
+    --very-dark-blue-dt: hsl(235, 21%, 11%);
+    --very-light-grayish-blue-lt: hsl(236, 33%, 92%);
+    --light-grayish-blue-lt: hsl(233, 11%, 84%);
+    --dark-grayish-blue-lt: hsl(236, 9%, 61%);
+    --very-dark-grayish-blue-lt: hsl(235, 19%, 35%);
+    --bg-card: hsl(235, 24%, 19%);
+    --light-grayish-blue-dt: hsl(234, 39%, 85%);
+    --light-grayish-blue-hover-dt: hsl(236, 33%, 92%);
+    --dark-grayish-blue-dt: hsl(234, 11%, 52%);
+    --input-info: hsl(233, 14%, 35%);
+    --circle-border: hsl(237, 14%, 26%);
+    --check-linear-start: hsl(192, 100%, 67%);
+    --check-linear-end: hsl(280, 87%, 65%);
+    --bright-blue: hsl(220, 98%, 61%);
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+@layer base {
+    * {
+        @apply ease-in-out duration-100;
+    }
+}
+
+@layer components {
+    .bg-body {
+        @apply min-h-screen w-screen absolute -z-30 flex flex-col items-center bg-[#fafafa] dark:bg-[#161722]
+    }
+
+    .bg-image {
+        @apply bg-[url('./images/bg-mobile-light.jpg')] dark:bg-[url('./images/bg-mobile-dark.jpg')] sm:bg-[url('./images/bg-desktop-light.jpg')] sm:dark:bg-[url('./images/bg-desktop-dark.jpg')] bg-no-repeat bg-cover bg-center w-full h-[200px] absolute -z-10 sm:h-[300px];
+    }
+
+    .header-title {
+        @apply text-[1.65rem] sm:text-[2.5rem] text-white font-bold tracking-[0.4em];
+    }
+
+    .header-icon {
+        @apply h-5 sm:h-7 w-5 sm:w-7 cursor-pointer hover:rotate-[360deg] hover:duration-1000;
+    }
+
+    .input-box {
+        @apply bg-white dark:bg-[var(--bg-card)] flex items-center px-4 py-[0.8rem] sm:py-[1.2rem] rounded-[0.3rem] gap-3 sm:gap-6 mt-7;
+    }
+
+    .check {
+        @apply cursor-pointer w-[1.4rem] sm:w-[1.6rem] h-[1.4rem] sm:h-[1.6rem] border-2 rounded-full relative dark:border-[var(--circle-border)] hover:bg-gradient-to-br from-[var(--check-linear-start)] to-[var(--check-linear-end)] hover:border-0 hover:before:bg-[var(--light-grayish-blue-lt)] dark:hover:before:bg-[var(--bg-card)] before:absolute before:right-[4%] before:left-[4%] before:top-[4%] before:bottom-[4%] before:rounded-full;
+    }
+
+
+    .check-active {
+        @apply bg-gradient-to-br from-[var(--check-linear-start)] to-[var(--check-linear-end)] border-0;
+    }
+
+    .check-img {
+        @apply h-[0.6rem] w-[0.6rem] absolute top-[0.45rem] sm:top-2 left-[0.45rem] sm:left-2;
+    }
+
+    .input {
+        @apply text-xs sm:text-lg placeholder:font-medium placeholder:text-gray-400 text-[var(--very-dark-grayish-blue-lt)] font-medium outline-none w-10/12 dark:bg-[var(--bg-card)] dark:placeholder:text-[var(--input-info)] dark:text-[var(--light-grayish-blue-lt)];
+    }
+
+    .todo-container {
+        @apply flex items-center px-4 sm:px-6 py-[0.9rem] sm:py-[1.05rem] bg-white border-b border-[var(--light-grayish-blue-dt)] dark:border-[var(--circle-border)] dark:bg-[var(--bg-card)];
+    }
+
+    .todo {
+        @apply ml-3 text-[var(--very-dark-grayish-blue-lt)] text-xs sm:text-lg sm:ml-6 dark:text-[var(--light-grayish-blue-dt)] cursor-pointer;
+    }
+
+    .filters-container {
+        @apply flex justify-between items-center bg-white pr-4 pl-5 sm:px-6 py-[0.85rem] dark:bg-[var(--bg-card)] gap-4;
+    }
+
+    .filter {
+        @apply absolute sm:static sm:pb-2 sm:pt-2 left-0 right-0 bottom-[-4rem] pt-4 rounded-[0.3rem] justify-center
+    }
+
+
+    .quantity-task {
+        @apply text-[var(--very-dark-grayish-blue-lt)] text-xs dark:text-[var(--dark-grayish-blue-dt)] sm:text-sm;
+    }
+
+    .btn-filter {
+        @apply text-[var(--very-dark-grayish-blue-lt)] opacity-80 hover:opacity-100 text-sm font-bold dark:text-[var(--dark-grayish-blue-dt)] hover:text-[var(--very-dark-grayish-blue-lt)] dark:hover:text-white block cursor-pointer focus-visible:outline-none;
+    }
+
+    .clear-btn {
+        @apply text-[var(--dark-grayish-blue-lt)] text-xs dark:text-[var(--dark-grayish-blue-dt)] sm:text-sm hover:text-[var(--very-dark-grayish-blue-lt)] dark:hover:text-white cursor-pointer outline-none;
+    }
+
+    /* Add these to your index.css */
+    .sortable-list {
+        @apply flex flex-col;
+    }
+
+    .sortable-ghost {
+        @apply opacity-50 bg-gray-100 dark:bg-gray-800;
+    }
+
+    .sortable-drag {
+        @apply shadow-lg;
+    }
+
+    .drag-handle {
+        @apply text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400;
+        user-select: none;
+    }
+
+    .drag-drop {
+        @apply text-center mt-[6.5rem] sm:mt-12 text-sm text-[var(--dark-grayish-blue-lt)] dark:text-[var(--dark-grayish-blue-dt)];
+    }
+}
+
+.active-filter {
+    color: var(--bright-blue) !important;
+}
